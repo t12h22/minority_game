@@ -1,0 +1,14 @@
+<h1>2択のゲーム</h1>
+<p>{{ question.text }}</p>
+
+<form method="post" action="{% url 'game_view' %}">
+  {% csrf_token %}
+  <input type="hidden" name="question_id" value="{{ question.id }}">
+  <input type="radio" name="choice" value="Choice A" id="choice_a">
+  <label for="choice_a">Choice A</label>
+  <input type="radio" name="choice" value="Choice B" id="choice_b">
+  <label for="choice_b">Choice B</label>
+  <button type="submit">回答する</button>
+</form>
+
+<p>Choice A: {{ choice_counts.0 }} 回答 / Choice B: {{ choice_counts.1 }} 回答</p>
